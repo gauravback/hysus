@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>test</title>
+</head>
+<body>
+	 <div class="axil-contact-form contact-form-style-1">
+                                    <h3 class="title">Get a free Hysus quote now</h3>
+
+                                    <form id="contact-form" method="post" onsubmit="sendEmail(event)">
+                                        <div class="col-md-12 input-subject">
+                                       
+                                        <select class="form-select subject" id="subject" name="subject" aria-label="Default select example">
+                                            <option selected>This question is about...</option> 
+                                            <option>Registering/Authorising</option>
+                                            <option>Using Application</option>
+                                            <option>Troubleshooting</option>
+                                            <option>Backup/Restore</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+                                        <div class="form-group mt-5">
+                                            <input name="name" type="text">
+                                            <label>Name</label>
+                                            <span class="focus-border"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="email" type="email">
+                                            <label>Email</label>
+                                            <span class="focus-border"></span>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <textarea name="message"></textarea>
+                                            <label>Your message</label>
+                                            <span class="focus-border"></span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="submit" name="submit" value="Send message">
+                                            <p class="form-messege"></p>
+                                        </div>
+                                    </form>
+
+                                </div>
+
+</body>
+ <script src="assets/js/main.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script>
+            function sendEmail(event){
+                event.preventDefault()
+                
+                const subject = event.target.subject.value;
+                const name = event.target.name.value;
+                const email = event.target.email.value;
+                const message = event.target.message.value;
+
+                
+
+                let msg = `Name: ${name}
+                Email: ${email}
+                Message: ${message}`
+                
+            Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "hysustechnology@gmail.com",
+    Password : "790E10820CA1D0FA235011282692902815E7",
+    To : 'hysustechnology+contact@gmail.com',
+    From : "hysustechnology@gmail.com",
+    Subject : subject,
+    Body : msg
+}).then(
+  message => alert(message)
+);}
+        </script>
+</html>
